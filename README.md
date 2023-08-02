@@ -76,3 +76,36 @@ This pattern is called memento pattern. In the original GoF book the classes hav
 
 <img alt="UML_Memento.png" src="src/main/resources/static/imgs/UML_Memento.png" width="500"/>
 
+## 03-State-Pattern
+It is a part of behavioural design pattern. State pattern is used when we want an object to behave differently depending on the different conditions.
+### Problem:
+Let's say we have a Paint application that has 2 tools Pen and eraser. Now, depending on the tool we have selected 
+our paint application should respond differently to mouse events such as mouse up and mouse down.   
+Assume that we have a canvas class that will call the methods `mouseUp()` and `mouseDown()` 
+
+### Solutions:
+Solution 1:  
+Use if, else-if and else conditional statements to implement this kind of behaviour but this solution is not extensible at all.  
+This approach is not maintainable as more tools (which definitely will) come in picture this if-else conditional would grow out of hand.  
+
+Solution 2: (State pattern)   
+Introduce an interface or abstract class called `Tool` having mouseUp() and mouseDown() method declaration. Introduce different 
+tool classes such as `Pen`, `Eraser` as a child class of the `Tool` interface. Now, these tool classes need 
+to implement the method `mouseUp()` and `mouseDown()`. In our canvas class we will be working with Tool interface, we can use 
+setter to set the tool to either Pen or Eraser.  
+Refer: [state-code]()   
+
+This pattern follows Open Closed Principle.
+> Open Closed Principle states that our classes should be open for extension and close for modification.
+
+With this pattern we can easily add new features by adding new class without modifying the old ones.
+
+This pattern is called state pattern. In the original GoF book the classes and methods have been renamed.  
+<img alt="UML_State.png" src="src/main/resources/static/imgs/UML_State.png" width="500"/>
+
+#### Abusing Patterns:
+Every pattern has a context behind it. While using the design pattern it is important to keep in mind the context.  
+Implementing the pattern without it actually in need can cause code smell and make our program complex. We should avoid 
+over-engineering. Don't blindly apply the pattern anywhere without understanding the context of the problem.  
+
+
