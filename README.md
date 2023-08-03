@@ -108,4 +108,24 @@ Every pattern has a context behind it. While using the design pattern it is impo
 Implementing the pattern without it actually in need can cause code smell and make our program complex. We should avoid 
 over-engineering. Don't blindly apply the pattern anywhere without understanding the context of the problem.  
 
+## 04-Iterator-Pattern
+It is a part of behavioural design pattern. It is used to iterate over a list/stack or anything that is a collection without needing to know the 
+internal details. 
+
+### Problem:
+To iterate over a list we may use a for-loop but what if internally we change the list to be an array of fixed size. This 
+would break the system.
+
+### Solution (Iterator Pattern)
+Introduce an interface having 3 different methods: 
+1. hasNext() returns true if there is any more item to iterate
+2. current() returns the current item
+3. next() moves the pointer to the next element.
+
+Now if we are using List internally we will create a class called ListIterator that would implement the iterator iterface 
+that we just created. Implement the abstract method accordingly. In the BrowserHistory class we will have a method called `createIterator()` 
+that would just return the iterator.  
+Now to iterate over the items we can use the following approach: [Main.java](src/main/java/iterator/Main.java)  
+This is the iterator pattern.  
+<img alt="UML_Iterator.png" src="src/main/resources/static/imgs/UML_Iterator.png" width="500"/>
 
